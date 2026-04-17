@@ -1,0 +1,8 @@
+{
+  "openrpc": "1.2.6",
+  "info": {
+    "title": "Bitcoin Core RPC",
+    "version": "v29.3.0"
+  },
+  "methods": [{ "comment": "we could have this file for every version down to v24" }]
+}
