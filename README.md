@@ -1,4 +1,6 @@
-# Proof of Concept for Bitcoin Core OpenRPC spec corepc-types codegen
+# Codegen Rust Types from OpenRPC Spec of Bitcoin Core RPC API
+
+Runs code generation against OpenRPC sample, producing a single `<output_folder>/<structs>` containing every struct the spec implies.
 
 This repo is still being developed!
 
@@ -8,19 +10,9 @@ To use, type:
 python codegen.py -i specs/v30_2_0_openrpc.json -o client.rs -c 30
 ```
 
-For Bitcoin Core v30 for example.
+## Adding a new Bitcoin Core version
 
-## What it does
-
-Codegen — runs `corepc-codegen` against `specs/vN_*_openrpc.json`, producing a single `output/vN_generated.rs` containing every struct the spec implies.
-
-## Operations manual — adding a new Bitcoin Core version
-
-When a new Bitcoin Core release (say **v32**) ships:
-
-### 1. Obtain the OpenRPC spec
-
-Generating the OpenRPC spec requires running branch [this PR](https://github.com/bitcoin/bitcoin/pull/34683) on Bitcoin Core target version that adds a new command called `bitcoin-cli getopenrpcinfo`.
+When a new Bitcoin Core release (say **v32**) ships, obtain the OpenRPC spec by generating the OpenRPC spec requires running branch [this PR](https://github.com/bitcoin/bitcoin/pull/34683) on Bitcoin Core target version that adds a new command called `bitcoin-cli getopenrpcinfo`.
 
 Run on Bitcoin Core itself:
 
