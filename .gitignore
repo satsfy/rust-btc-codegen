@@ -4,3 +4,5 @@ Cargo.lock
 **/target
 spec_compare/output/
 spec_compare/__pycache__/
+*.pyc
+*_compare.txt

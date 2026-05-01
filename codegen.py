@@ -43,13 +43,16 @@ _FIELD_WORDS = sorted([
     "chainwork", "mediantime", "nchaintx",
     "addresses", "address", "amounts", "amount", "ancestors", "ancestor",
     "automatic", "balances", "balance", "banned", "bare", "bestblock",
-    "blocks", "block", "bytes", "carrier", "chainstates", "chainstate",
+    "blocks", "block", "burn", "bytes", "carrier", "chainstates", "chainstate",
     "chains", "chain", "challenge", "changes", "change", "coins", "coin",
     "confirmations", "conf", "connections", "counts", "count", "current",
     "data", "deltas", "delta", "depths", "depth", "descendants", "descendant",
     "descriptors", "descriptor", "desc", "difficulty", "disk", "download",
     "effective", "entries", "entry", "errors", "error", "estimated",
-    "feerates", "feerate", "fees", "fee", "filters", "filter", "final",
+    # NB: "feerate"/"feerates" deliberately NOT in this list — they are split into
+    # ["fee", "rate"] / ["fee", "rates"] by the greedy-fallback path so the resulting
+    # Rust idents (`fee_rate`, `fee_rates`) match the convention used in `corepc-types`.
+    "fees", "fee", "filters", "filter", "final",
     "first", "full", "hashps", "hash", "hd", "headers", "header", "heights",
     "height", "hex", "included", "incremental", "index", "info", "initial",
     "internal", "keys", "key", "labels", "label", "last", "limits", "limit",
