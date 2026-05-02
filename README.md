@@ -27,12 +27,12 @@ Those four files are then copied into
 
 ## Why three output files?
 
-A single 5,000-line `generated.rs` makes diffs unreviewable. Splitting by concern lets a
+To make diffs unreviewable this splits by concern lets a
 reviewer auditing a new Core version skim each surface independently:
 
-* `types.rs`   answers "did the response shape change?"
-* `options.rs` answers "did optional parameters change?"
-* `methods.rs` answers "did dispatch shape change?"
+- `types.rs` answers "did the response shape change?"
+- `options.rs` answers "did optional parameters change?"
+- `methods.rs` answers "did dispatch shape change?"
 
 Most Core releases touch one of those without the others.
 
@@ -57,23 +57,13 @@ client.raw().send_raw_transaction_with(
 
 ### Regenerate bindings
 
-From the corepc workspace root:
-
-```bash
-just codegen          # regenerate every version
-just codegen 30       # regenerate one version
-```
-
-Both recipes shell into this directory, run `cargo run --release -- <version|all>`, and copy
-the resulting `output/v{N}/` tree into `corepc-client/src/client_async/codegen/v{N}/`.
-
 Directly from this directory:
 
 ```bash
-just codegen 30       # writes to ./output/v30/, no copying
+just codegen 30
 just codegen-all
-just test             # runs the Rust unit tests
-just lint             # cargo clippy --deny warnings
+just test
+just lint
 just clean
 ```
 
@@ -93,44 +83,10 @@ Hand-written model wrappers do **not** belong in this repo — they live in
 `client.raw().some_rpc()`; a model wrapper is a 5-line function on `Client` that delegates to
 that and runs `into_model()`.
 
-## Repository layout
-
-```
-.
-├── README.md
-├── Cargo.toml         ← self-contained crate manifest (empty `[workspace]` table keeps it
-│                        out of the corepc Cargo workspace)
-├── justfile           ← codegen / codegen-all / test / lint / clean
-├── src/
-│   ├── main.rs        ← CLI: `btc-codegen <version|all>`
-│   ├── lib.rs         ← public `generate(spec, out_dir, version)` entry point
-│   ├── names.rs       ← word lists + identifier conversion (PascalCase / snake_case)
-│   ├── spec.rs        ← typed slice of OpenRPC JSON we need to read
-│   └── codegen.rs     ← schema → Rust translation; emits the four output files
-├── specs/             ← committed OpenRPC specs, one per Bitcoin Core release
-│   ├── v29_3_0_openrpc.json
-│   └── v30_2_0_openrpc.json
-└── output/            ← generated artefacts (git-ignored; regenerable)
-    └── v30/
-        ├── mod.rs
-        ├── types.rs
-        ├── options.rs
-        └── methods.rs
-```
-
 ## Design notes
 
-### Codegen as a one-way dependency
-
-The generator is **not** a build dependency of `corepc-client`. The generated `.rs` files are
-committed to the consumer's tree so:
-
-* `cargo build` works on a fresh checkout without this repo present.
-* PR reviewers can see exactly what ships.
-* Reproducibility is git's job, not ours.
-
-The cost is that every spec change requires a maintainer to run `just codegen` and commit the
-diff. That is intentional — it forces a human to read the diff before it ships.
+Every spec change requires a maintainer to run `just codegen` and commit the
+diff.
 
 ### Type-name conventions
 
@@ -139,7 +95,7 @@ used by a longest-match peeling scan to convert all-lowercase compounds. Two des
 the contents:
 
 1. **Plurals are listed only when they cannot be reconstructed by appending `s`.** Words ending
-   in a consonant + `s` (`blocks`, `txs`, `times`) are *omitted* because keeping them shadows
+   in a consonant + `s` (`blocks`, `txs`, `times`) are _omitted_ because keeping them shadows
    real word boundaries — `blocks` + `tats` would otherwise win over the correct `block` +
    `stats` split in `getblockstats`.
 2. **Single-word forms preferred over compound forms.** `txout` is split into `tx` + `out` so
@@ -178,8 +134,30 @@ expression.
 ## Running the tests
 
 ```bash
-cargo test                    # unit tests for name conversion and codegen helpers
+cargo test
 ```
 
-The strongest acceptance test is "the consumer crate's tests still pass after a regen" — that
-is, `cargo test -p corepc-client --features client-async` from the corepc workspace root.
+## Repository layout
+
+```
+.
+├── README.md
+├── Cargo.toml         ← self-contained crate manifest (empty `[workspace]` table keeps it
+│                        out of the corepc Cargo workspace)
+├── justfile           ← codegen / codegen-all / test / lint / clean
+├── src/
+│   ├── main.rs        ← CLI: `btc-codegen <version|all>`
+│   ├── lib.rs         ← public `generate(spec, out_dir, version)` entry point
+│   ├── names.rs       ← word lists + identifier conversion (PascalCase / snake_case)
+│   ├── spec.rs        ← typed slice of OpenRPC JSON we need to read
+│   └── codegen.rs     ← schema → Rust translation; emits the four output files
+├── specs/             ← committed OpenRPC specs, one per Bitcoin Core release
+│   ├── v29_3_0_openrpc.json
+│   └── v30_2_0_openrpc.json
+└── output/            ← generated artefacts (git-ignored; regenerable)
+    └── v30/
+        ├── mod.rs
+        ├── types.rs
+        ├── options.rs
+        └── methods.rs
+```
