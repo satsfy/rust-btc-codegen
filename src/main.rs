@@ -77,7 +77,8 @@ fn find_spec(specs_dir: &Path, version: &str) -> Option<PathBuf> {
 
 fn list_versions(specs_dir: &Path) -> Result<Vec<String>, String> {
     let mut out = Vec::new();
-    let entries = fs::read_dir(specs_dir).map_err(|e| format!("read {}: {e}", specs_dir.display()))?;
+    let entries =
+        fs::read_dir(specs_dir).map_err(|e| format!("read {}: {e}", specs_dir.display()))?;
     for entry in entries.flatten() {
         let name = entry.file_name();
         let Some(name) = name.to_str() else { continue };

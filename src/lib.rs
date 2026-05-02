@@ -20,18 +20,13 @@ use crate::spec::Spec;
 /// Reads the OpenRPC spec at `spec_path` and writes the generated modules under `out_dir`.
 ///
 /// `version` is the short Bitcoin Core version ("30", "28") used in module headers.
-pub fn generate(
-    spec_path: &Path,
-    out_dir: &Path,
-    version: &str,
-) -> Result<Summary, String> {
-    let raw = fs::read_to_string(spec_path)
-        .map_err(|e| format!("read {}: {e}", spec_path.display()))?;
-    let spec: Spec = serde_json::from_str(&raw)
-        .map_err(|e| format!("parse {}: {e}", spec_path.display()))?;
+pub fn generate(spec_path: &Path, out_dir: &Path, version: &str) -> Result<Summary, String> {
+    let raw =
+        fs::read_to_string(spec_path).map_err(|e| format!("read {}: {e}", spec_path.display()))?;
+    let spec: Spec =
+        serde_json::from_str(&raw).map_err(|e| format!("parse {}: {e}", spec_path.display()))?;
 
-    fs::create_dir_all(out_dir)
-        .map_err(|e| format!("mkdir {}: {e}", out_dir.display()))?;
+    fs::create_dir_all(out_dir).map_err(|e| format!("mkdir {}: {e}", out_dir.display()))?;
 
     let modules = codegen::lower(&spec);
     let summary = Summary {

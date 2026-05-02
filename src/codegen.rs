@@ -22,8 +22,7 @@ use crate::names::{method_to_pascal, method_to_snake, to_pascal, to_rust_field};
 use crate::spec::{AdditionalProperties, Method, Param, Schema, Spec};
 
 /// Standard derive line for every emitted type.
-const DERIVES: &str =
-    "#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]\n\
+const DERIVES: &str = "#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]\n\
      #[cfg_attr(feature = \"serde-deny-unknown-fields\", serde(deny_unknown_fields))]";
 
 /// One emitted Rust definition; `nested` holds the helper types this definition depends on.
@@ -62,8 +61,12 @@ struct ParamOut {
 }
 
 impl Modules {
-    pub fn types_count(&self) -> usize { self.types.len() }
-    pub fn methods_count(&self) -> usize { self.methods.len() }
+    pub fn types_count(&self) -> usize {
+        self.types.len()
+    }
+    pub fn methods_count(&self) -> usize {
+        self.methods.len()
+    }
     pub fn option_count(&self) -> usize {
         self.methods.iter().filter(|m| m.has_optional()).count()
     }
@@ -148,8 +151,12 @@ impl Modules {
 }
 
 impl MethodOut {
-    fn has_optional(&self) -> bool { self.params.iter().any(|p| !p.required) }
-    fn options_struct_name(&self) -> String { format!("{}Options", self.pascal) }
+    fn has_optional(&self) -> bool {
+        self.params.iter().any(|p| !p.required)
+    }
+    fn options_struct_name(&self) -> String {
+        format!("{}Options", self.pascal)
+    }
 }
 
 /// PascalCase names that collide with std/prelude items. The codegen rewrites these to a
@@ -259,7 +266,11 @@ trait OptStrExt {
 }
 impl OptStrExt for String {
     fn as_deref_opt(&self) -> Option<&str> {
-        if self.is_empty() { None } else { Some(self.as_str()) }
+        if self.is_empty() {
+            None
+        } else {
+            Some(self.as_str())
+        }
     }
 }
 
@@ -294,9 +305,11 @@ fn array_type(
     GenType { name: name.to_owned(), body, nested }
 }
 
-fn array_item(schema: &Schema, parent: &str, seen: &mut BTreeSet<String>)
-    -> (String, Vec<GenType>)
-{
+fn array_item(
+    schema: &Schema,
+    parent: &str,
+    seen: &mut BTreeSet<String>,
+) -> (String, Vec<GenType>) {
     let Some(items) = schema.items.as_ref().and_then(|i| i.primary()) else {
         return ("String".to_owned(), vec![]);
     };
@@ -343,11 +356,8 @@ fn one_of(
     let mut emitted: Vec<GenType> = Vec::new();
     for (i, v) in variants.iter().enumerate() {
         let cond = v.condition.clone().unwrap_or_else(|| v.description.clone().unwrap_or_default());
-        let suffix = if cond.contains(" and ") {
-            verbose_suffix("", i)
-        } else {
-            verbose_suffix(&cond, i)
-        };
+        let suffix =
+            if cond.contains(" and ") { verbose_suffix("", i) } else { verbose_suffix(&cond, i) };
         if let Some(g) = dispatch(&format!("{name}{suffix}"), v, doc, seen) {
             emitted.push(g);
         }
@@ -393,8 +403,11 @@ fn struct_type(
         Some(m) => m,
         None => &serde_json::Map::new(),
     };
-    let required: BTreeSet<&str> =
-        schema.required.as_ref().map(|v| v.iter().map(String::as_str).collect()).unwrap_or_default();
+    let required: BTreeSet<&str> = schema
+        .required
+        .as_ref()
+        .map(|v| v.iter().map(String::as_str).collect())
+        .unwrap_or_default();
 
     let mut field_lines: Vec<String> = Vec::new();
     let mut nested: Vec<GenType> = Vec::new();
@@ -433,9 +446,7 @@ fn struct_type(
     let header = fmt_doc(doc);
 
     if field_lines.is_empty()
-        && commentary_only
-            .iter()
-            .any(|s| s.to_lowercase().contains("decoderawtransaction"))
+        && commentary_only.iter().any(|s| s.to_lowercase().contains("decoderawtransaction"))
     {
         let body = format!("{header}pub type {name} = DecodeRawTransaction;\n");
         return GenType { name: name.to_owned(), body, nested };
@@ -444,17 +455,12 @@ fn struct_type(
     let body = if field_lines.is_empty() {
         format!("{header}{DERIVES}\npub struct {name} {{}}\n")
     } else {
-        format!(
-            "{header}{DERIVES}\npub struct {name} {{\n{}\n}}\n",
-            field_lines.join("\n")
-        )
+        format!("{header}{DERIVES}\npub struct {name} {{\n{}\n}}\n", field_lines.join("\n"))
     };
     GenType { name: name.to_owned(), body, nested }
 }
 
-fn inner_type(name: &str, schema: &Schema, seen: &mut BTreeSet<String>)
-    -> (String, Vec<GenType>)
-{
+fn inner_type(name: &str, schema: &Schema, seen: &mut BTreeSet<String>) -> (String, Vec<GenType>) {
     if schema.properties.is_some() {
         let gt = struct_type(name, schema, schema.description.as_deref(), seen);
         let result_name = gt.name.clone();
@@ -554,9 +560,27 @@ fn simple_type(schema: &Schema) -> Option<&'static str> {
 fn verbose_suffix(condition: &str, index: usize) -> String {
     let c = condition.to_ascii_lowercase();
     let patterns: &[(&str, &[&str])] = &[
-        ("VerboseZero",  &["verbose=false", "verbose=0", "verbose is not set", "verbose is false", "verbosity=0"]),
-        ("VerboseOne",   &["verbose=true",  "verbose=1", "verbose is set to true", "verbose is set to 1", "verbosity=1"]),
-        ("VerboseTwo",   &["verbose=2", "verbosity=2"]),
+        (
+            "VerboseZero",
+            &[
+                "verbose=false",
+                "verbose=0",
+                "verbose is not set",
+                "verbose is false",
+                "verbosity=0",
+            ],
+        ),
+        (
+            "VerboseOne",
+            &[
+                "verbose=true",
+                "verbose=1",
+                "verbose is set to true",
+                "verbose is set to 1",
+                "verbosity=1",
+            ],
+        ),
+        ("VerboseTwo", &["verbose=2", "verbosity=2"]),
         ("VerboseThree", &["verbose=3", "verbosity=3"]),
     ];
     let normalised = c.replace(' ', "");
@@ -565,9 +589,8 @@ fn verbose_suffix(condition: &str, index: usize) -> String {
             return (*label).to_owned();
         }
     }
-    ["VerboseZero", "VerboseOne", "VerboseTwo", "VerboseThree", "VerboseFour"]
-        [index.min(4)]
-    .to_owned()
+    ["VerboseZero", "VerboseOne", "VerboseTwo", "VerboseThree", "VerboseFour"][index.min(4)]
+        .to_owned()
 }
 
 // ---------------------------------------------------------------------------
@@ -584,11 +607,8 @@ fn emit_method(m: &MethodOut) -> String {
         .map(|p| format!("{}: {}", p.rust_name, p.rust_type))
         .collect::<Vec<_>>()
         .join(", ");
-    let bare_sig = if req_args.is_empty() {
-        "&self".to_owned()
-    } else {
-        format!("&self, {req_args}")
-    };
+    let bare_sig =
+        if req_args.is_empty() { "&self".to_owned() } else { format!("&self, {req_args}") };
 
     out.push_str(&doc_block(
         &[
@@ -620,10 +640,7 @@ fn emit_method(m: &MethodOut) -> String {
         out.push('\n');
         out.push_str(&doc_block(
             &[
-                &format!(
-                    "`{}` — with all optional arguments via [`{opts_name}`].",
-                    m.method_name
-                ),
+                &format!("`{}` — with all optional arguments via [`{opts_name}`].", m.method_name),
                 "",
                 &m.summary,
             ],
@@ -704,7 +721,9 @@ fn emit_options_struct(m: &MethodOut) -> String {
     s
 }
 
-fn normalise_rename(s: &str) -> String { s.to_owned() }
+fn normalise_rename(s: &str) -> String {
+    s.to_owned()
+}
 
 fn format_default(default: &Option<Value>) -> String {
     match default {
@@ -750,10 +769,7 @@ fn param_type(schema: &Schema, name: Option<&str>) -> String {
                 }
             }
             if let Some(name) = name {
-                if INTEGER_PARAM_NAMES
-                    .iter()
-                    .any(|n| n.eq_ignore_ascii_case(name))
-                {
+                if INTEGER_PARAM_NAMES.iter().any(|n| n.eq_ignore_ascii_case(name)) {
                     return "i64".to_owned();
                 }
             }
@@ -774,10 +790,35 @@ fn param_type(schema: &Schema, name: Option<&str>) -> String {
 /// Parameter names that are integer-only across the entire RPC surface despite Core's spec
 /// declaring them as `type: number`.
 pub static INTEGER_PARAM_NAMES: &[&str] = &[
-    "height", "verbosity", "verbose", "minconf", "maxconf", "conf_target", "nblocks", "blocks",
-    "count", "num_blocks", "n", "version", "locktime", "port", "timeout", "millis",
-    "block_timeout", "node_id", "rescan_height", "start_height", "stop_height", "depth", "index",
-    "nout", "vout", "skip", "nodeid", "id", "uid",
+    "height",
+    "verbosity",
+    "verbose",
+    "minconf",
+    "maxconf",
+    "conf_target",
+    "nblocks",
+    "blocks",
+    "count",
+    "num_blocks",
+    "n",
+    "version",
+    "locktime",
+    "port",
+    "timeout",
+    "millis",
+    "block_timeout",
+    "node_id",
+    "rescan_height",
+    "start_height",
+    "stop_height",
+    "depth",
+    "index",
+    "nout",
+    "vout",
+    "skip",
+    "nodeid",
+    "id",
+    "uid",
 ];
 
 /// Drop `summary` from the start of `description` if it's verbatim there. Bitcoin Core's spec

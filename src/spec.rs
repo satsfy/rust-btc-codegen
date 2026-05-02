@@ -31,7 +31,9 @@ pub struct Method {
     pub category: String,
 }
 
-fn default_category() -> String { "misc".to_owned() }
+fn default_category() -> String {
+    "misc".to_owned()
+}
 
 /// One parameter of a method.
 #[derive(Debug, Deserialize)]
@@ -143,10 +145,7 @@ impl Schema {
     }
 
     pub fn has_props(&self) -> bool {
-        self.properties
-            .as_ref()
-            .map(|m| m.values().any(Value::is_object))
-            .unwrap_or(false)
+        self.properties.as_ref().map(|m| m.values().any(Value::is_object)).unwrap_or(false)
     }
 
     pub fn primary_kind(&self) -> Option<&str> {

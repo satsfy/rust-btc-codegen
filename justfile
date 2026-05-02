@@ -33,3 +33,6 @@ lint:
 clean:
     rm -rf "{{REPO_DIR}}/output"
     cargo clean --manifest-path "{{REPO_DIR}}/Cargo.toml"
+
+fmt:
+    cargo fmt --manifest-path "{{REPO_DIR}}/Cargo.toml" --all

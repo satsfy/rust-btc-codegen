@@ -37,8 +37,7 @@
       "summary": "Stops current wallet rescan triggered by an RPC call, e.g. by a rescanblockchain call.",
       "description": "Stops current wallet rescan triggered by an RPC call, e.g. by a rescanblockchain call.\nNote: Use \"getwalletinfo\" to query the scanning progress.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -97,10 +96,7 @@
               "description": "Type of connection opened."
             }
           },
-          "required": [
-            "address",
-            "connection_type"
-          ],
+          "required": ["address", "connection_type"],
           "additionalProperties": false
         }
       },
@@ -201,9 +197,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "success"
-          ],
+          "required": ["success"],
           "additionalProperties": false
         }
       },
@@ -292,10 +286,7 @@
                     "x-bitcoin-optional": true
                   }
                 },
-                "required": [
-                  "has_utxo",
-                  "is_final"
-                ],
+                "required": ["has_utxo", "is_final"],
                 "additionalProperties": false
               },
               "x-bitcoin-optional": true
@@ -327,9 +318,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "next"
-          ],
+          "required": ["next"],
           "additionalProperties": false
         }
       },
@@ -440,17 +429,14 @@
                         "description": "A key-value pair. The key must be \"data\", the value is hex-encoded data that becomes a part of an OP_RETURN output"
                       }
                     },
-                    "required": [
-                      "data"
-                    ],
+                    "required": ["data"],
                     "additionalProperties": false
                   }
                 ],
                 "minItems": 2,
                 "description": "The outputs specified as key-value pairs.\nEach key may only appear once, i.e. there can only be one 'data' output, and no address may be duplicated.\nAt least one output of either type must be specified.\nCannot be provided if 'original_change_index' is specified.",
                 "x-bitcoin-skip-type-check": true,
-                "default": [
-                ]
+                "default": []
               },
               "original_change_index": {
                 "type": "number",
@@ -494,12 +480,7 @@
               "description": "Errors encountered during processing (may be empty)."
             }
           },
-          "required": [
-            "txid",
-            "origfee",
-            "fee",
-            "errors"
-          ],
+          "required": ["txid", "origfee", "fee", "errors"],
           "additionalProperties": false
         }
       },
@@ -511,8 +492,7 @@
       "summary": "Clear all banned IPs.",
       "description": "Clear all banned IPs.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -701,11 +681,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "address",
-            "redeemScript",
-            "descriptor"
-          ],
+          "required": ["address", "redeemScript", "descriptor"],
           "additionalProperties": false
         }
       },
@@ -741,10 +717,7 @@
                   "x-bitcoin-default-hint": "depends on the value of the 'replaceable' and 'locktime' arguments"
                 }
               },
-              "required": [
-                "txid",
-                "vout"
-              ],
+              "required": ["txid", "vout"],
               "additionalProperties": false
             },
             "description": "The inputs"
@@ -783,9 +756,7 @@
                     "description": "A key-value pair. The key must be \"data\", the value is hex-encoded data that becomes a part of an OP_RETURN output"
                   }
                 },
-                "required": [
-                  "data"
-                ],
+                "required": ["data"],
                 "additionalProperties": false
               }
             ],
@@ -866,10 +837,7 @@
                   "x-bitcoin-default-hint": "depends on the value of the 'replaceable' and 'locktime' arguments"
                 }
               },
-              "required": [
-                "txid",
-                "vout"
-              ],
+              "required": ["txid", "vout"],
               "additionalProperties": false
             },
             "description": "The inputs"
@@ -908,9 +876,7 @@
                     "description": "A key-value pair. The key must be \"data\", the value is hex-encoded data that becomes a part of an OP_RETURN output"
                   }
                 },
-                "required": [
-                  "data"
-                ],
+                "required": ["data"],
                 "additionalProperties": false
               }
             ],
@@ -1066,9 +1032,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "name"
-          ],
+          "required": ["name"],
           "additionalProperties": false
         }
       },
@@ -1125,9 +1089,7 @@
               "description": "The public descriptors that were added to the wallet"
             }
           },
-          "required": [
-            "descs"
-          ],
+          "required": ["descs"],
           "additionalProperties": false
         }
       },
@@ -1158,8 +1120,7 @@
             "tx": {
               "type": "object",
               "x-documentation-commentary": "The layout is the same as the output of decoderawtransaction.",
-              "properties": {
-              },
+              "properties": {},
               "additionalProperties": true,
               "description": "The decoded network-serialized unsigned transaction."
             },
@@ -1183,11 +1144,7 @@
                     "description": "The path"
                   }
                 },
-                "required": [
-                  "xpub",
-                  "master_fingerprint",
-                  "path"
-                ],
+                "required": ["xpub", "master_fingerprint", "path"],
                 "additionalProperties": false
               }
             },
@@ -1223,12 +1180,7 @@
                     "description": "The hex for the value"
                   }
                 },
-                "required": [
-                  "identifier",
-                  "subtype",
-                  "key",
-                  "value"
-                ],
+                "required": ["identifier", "subtype", "key", "value"],
                 "additionalProperties": false
               },
               "description": "The global proprietary map"
@@ -1251,8 +1203,7 @@
                 "properties": {
                   "non_witness_utxo": {
                     "type": "object",
-                    "properties": {
-                    },
+                    "properties": {},
                     "additionalProperties": true,
                     "description": "Decoded network transaction for non-witness UTXOs",
                     "x-bitcoin-optional": true
@@ -1291,19 +1242,11 @@
                             "x-bitcoin-optional": true
                           }
                         },
-                        "required": [
-                          "asm",
-                          "desc",
-                          "hex",
-                          "type"
-                        ],
+                        "required": ["asm", "desc", "hex", "type"],
                         "additionalProperties": false
                       }
                     },
-                    "required": [
-                      "amount",
-                      "scriptPubKey"
-                    ],
+                    "required": ["amount", "scriptPubKey"],
                     "additionalProperties": false,
                     "description": "Transaction output for witness UTXOs",
                     "x-bitcoin-optional": true
@@ -1340,11 +1283,7 @@
                         "description": "The type, eg 'pubkeyhash'"
                       }
                     },
-                    "required": [
-                      "asm",
-                      "hex",
-                      "type"
-                    ],
+                    "required": ["asm", "hex", "type"],
                     "additionalProperties": false,
                     "x-bitcoin-optional": true
                   },
@@ -1366,11 +1305,7 @@
                         "description": "The type, eg 'pubkeyhash'"
                       }
                     },
-                    "required": [
-                      "asm",
-                      "hex",
-                      "type"
-                    ],
+                    "required": ["asm", "hex", "type"],
                     "additionalProperties": false,
                     "x-bitcoin-optional": true
                   },
@@ -1392,11 +1327,7 @@
                           "description": "The path"
                         }
                       },
-                      "required": [
-                        "pubkey",
-                        "master_fingerprint",
-                        "path"
-                      ],
+                      "required": ["pubkey", "master_fingerprint", "path"],
                       "additionalProperties": false
                     },
                     "x-bitcoin-optional": true
@@ -1415,10 +1346,7 @@
                         "description": "The raw final signature script bytes, hex-encoded"
                       }
                     },
-                    "required": [
-                      "asm",
-                      "hex"
-                    ],
+                    "required": ["asm", "hex"],
                     "additionalProperties": false,
                     "x-bitcoin-optional": true
                   },
@@ -1493,11 +1421,7 @@
                           "description": "The signature itself"
                         }
                       },
-                      "required": [
-                        "pubkey",
-                        "leaf_hash",
-                        "sig"
-                      ],
+                      "required": ["pubkey", "leaf_hash", "sig"],
                       "additionalProperties": false,
                       "description": "The signature for the pubkey and leaf hash combination",
                       "x-bitcoin-optional": true
@@ -1530,11 +1454,7 @@
                           "description": "The control blocks for this script"
                         }
                       },
-                      "required": [
-                        "script",
-                        "leaf_ver",
-                        "control_blocks"
-                      ],
+                      "required": ["script", "leaf_ver", "control_blocks"],
                       "additionalProperties": false
                     },
                     "x-bitcoin-optional": true
@@ -1567,12 +1487,7 @@
                           "description": "The hashes of the leaves this pubkey appears in"
                         }
                       },
-                      "required": [
-                        "pubkey",
-                        "master_fingerprint",
-                        "path",
-                        "leaf_hashes"
-                      ],
+                      "required": ["pubkey", "master_fingerprint", "path", "leaf_hashes"],
                       "additionalProperties": false
                     },
                     "x-bitcoin-optional": true
@@ -1612,10 +1527,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "aggregate_pubkey",
-                        "participant_pubkeys"
-                      ],
+                      "required": ["aggregate_pubkey", "participant_pubkeys"],
                       "additionalProperties": false
                     },
                     "x-bitcoin-optional": true
@@ -1651,11 +1563,7 @@
                           "description": "The public nonce itself."
                         }
                       },
-                      "required": [
-                        "participant_pubkey",
-                        "aggregate_pubkey",
-                        "pubnonce"
-                      ],
+                      "required": ["participant_pubkey", "aggregate_pubkey", "pubnonce"],
                       "additionalProperties": false
                     },
                     "x-bitcoin-optional": true
@@ -1691,11 +1599,7 @@
                           "description": "The partial signature itself."
                         }
                       },
-                      "required": [
-                        "participant_pubkey",
-                        "aggregate_pubkey",
-                        "partial_sig"
-                      ],
+                      "required": ["participant_pubkey", "aggregate_pubkey", "partial_sig"],
                       "additionalProperties": false
                     },
                     "x-bitcoin-optional": true
@@ -1740,12 +1644,7 @@
                           "description": "The hex for the value"
                         }
                       },
-                      "required": [
-                        "identifier",
-                        "subtype",
-                        "key",
-                        "value"
-                      ],
+                      "required": ["identifier", "subtype", "key", "value"],
                       "additionalProperties": false
                     },
                     "description": "The input proprietary map",
@@ -1778,11 +1677,7 @@
                         "description": "The type, eg 'pubkeyhash'"
                       }
                     },
-                    "required": [
-                      "asm",
-                      "hex",
-                      "type"
-                    ],
+                    "required": ["asm", "hex", "type"],
                     "additionalProperties": false,
                     "x-bitcoin-optional": true
                   },
@@ -1804,11 +1699,7 @@
                         "description": "The type, eg 'pubkeyhash'"
                       }
                     },
-                    "required": [
-                      "asm",
-                      "hex",
-                      "type"
-                    ],
+                    "required": ["asm", "hex", "type"],
                     "additionalProperties": false,
                     "x-bitcoin-optional": true
                   },
@@ -1830,11 +1721,7 @@
                           "description": "The path"
                         }
                       },
-                      "required": [
-                        "pubkey",
-                        "master_fingerprint",
-                        "path"
-                      ],
+                      "required": ["pubkey", "master_fingerprint", "path"],
                       "additionalProperties": false
                     },
                     "x-bitcoin-optional": true
@@ -1864,11 +1751,7 @@
                           "description": "The hex-encoded script itself"
                         }
                       },
-                      "required": [
-                        "depth",
-                        "leaf_ver",
-                        "script"
-                      ],
+                      "required": ["depth", "leaf_ver", "script"],
                       "additionalProperties": false,
                       "description": "A single leaf script in the taproot tree",
                       "x-bitcoin-optional": true
@@ -1904,12 +1787,7 @@
                           "description": "The hashes of the leaves this pubkey appears in"
                         }
                       },
-                      "required": [
-                        "pubkey",
-                        "master_fingerprint",
-                        "path",
-                        "leaf_hashes"
-                      ],
+                      "required": ["pubkey", "master_fingerprint", "path", "leaf_hashes"],
                       "additionalProperties": false
                     },
                     "x-bitcoin-optional": true
@@ -1935,10 +1813,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "aggregate_pubkey",
-                        "participant_pubkeys"
-                      ],
+                      "required": ["aggregate_pubkey", "participant_pubkeys"],
                       "additionalProperties": false
                     },
                     "x-bitcoin-optional": true
@@ -1983,12 +1858,7 @@
                           "description": "The hex for the value"
                         }
                       },
-                      "required": [
-                        "identifier",
-                        "subtype",
-                        "key",
-                        "value"
-                      ],
+                      "required": ["identifier", "subtype", "key", "value"],
                       "additionalProperties": false
                     },
                     "description": "The output proprietary map",
@@ -2124,10 +1994,7 @@
                         "description": "The raw signature script bytes, hex-encoded"
                       }
                     },
-                    "required": [
-                      "asm",
-                      "hex"
-                    ],
+                    "required": ["asm", "hex"],
                     "additionalProperties": false,
                     "description": "The script (if not coinbase transaction)",
                     "x-bitcoin-optional": true
@@ -2147,9 +2014,7 @@
                     "description": "The script sequence number"
                   }
                 },
-                "required": [
-                  "sequence"
-                ],
+                "required": ["sequence"],
                 "additionalProperties": false
               }
             },
@@ -2194,20 +2059,11 @@
                         "description": "The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)"
                       }
                     },
-                    "required": [
-                      "asm",
-                      "desc",
-                      "hex",
-                      "type"
-                    ],
+                    "required": ["asm", "desc", "hex", "type"],
                     "additionalProperties": false
                   }
                 },
-                "required": [
-                  "value",
-                  "n",
-                  "scriptPubKey"
-                ],
+                "required": ["value", "n", "scriptPubKey"],
                 "additionalProperties": false
               }
             }
@@ -2305,23 +2161,13 @@
                   "description": "address of the P2SH script wrapping this witness redeem script"
                 }
               },
-              "required": [
-                "asm",
-                "hex",
-                "type",
-                "desc",
-                "p2sh-segwit"
-              ],
+              "required": ["asm", "hex", "type", "desc", "p2sh-segwit"],
               "additionalProperties": false,
               "description": "Result of a witness output script wrapping this redeem script (not returned for types that should not be wrapped)",
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "asm",
-            "desc",
-            "type"
-          ],
+          "required": ["asm", "desc", "type"],
           "additionalProperties": false
         }
       },
@@ -2447,9 +2293,7 @@
                     "default": 1000
                   }
                 },
-                "required": [
-                  "desc"
-                ],
+                "required": ["desc"],
                 "additionalProperties": false,
                 "description": "An object with an output descriptor and extra information"
               }
@@ -2512,10 +2356,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "psbt",
-            "complete"
-          ],
+          "required": ["psbt", "complete"],
           "additionalProperties": false
         }
       },
@@ -2592,10 +2433,7 @@
                 "type": "number",
                 "description": "Height or hash of the block to roll back to before creating the snapshot. Note: The further this number is from the tip, the longer this process will take. Consider setting a higher -rpcclienttimeout value in this case.",
                 "x-bitcoin-skip-type-check": true,
-                "x-bitcoin-type-string": [
-                  "",
-                  "string or numeric"
-                ]
+                "x-bitcoin-type-string": ["", "string or numeric"]
               }
             },
             "additionalProperties": false,
@@ -2741,8 +2579,7 @@
       ],
       "result": {
         "name": "result",
-        "schema": {
-        }
+        "schema": {}
       },
       "x-bitcoin-category": "hidden"
     },
@@ -2861,8 +2698,7 @@
       ],
       "result": {
         "name": "result",
-        "schema": {
-        }
+        "schema": {}
       },
       "x-bitcoin-category": "hidden"
     },
@@ -2897,8 +2733,7 @@
       "summary": "Returns a list of external signers from -signer.",
       "description": "Returns a list of external signers from -signer.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -2920,17 +2755,12 @@
                     "description": "Device name"
                   }
                 },
-                "required": [
-                  "fingerprint",
-                  "name"
-                ],
+                "required": ["fingerprint", "name"],
                 "additionalProperties": false
               }
             }
           },
-          "required": [
-            "signers"
-          ],
+          "required": ["signers"],
           "additionalProperties": false
         }
       },
@@ -3026,8 +2856,7 @@
                 },
                 "fail": {
                   "type": "object",
-                  "properties": {
-                  },
+                  "properties": {},
                   "additionalProperties": true,
                   "description": "information about the highest range of feerates to fail to meet the threshold",
                   "x-bitcoin-optional": true
@@ -3041,26 +2870,21 @@
                   "x-bitcoin-optional": true
                 }
               },
-              "required": [
-                "decay",
-                "scale"
-              ],
+              "required": ["decay", "scale"],
               "additionalProperties": false,
               "description": "estimate for short time horizon",
               "x-bitcoin-optional": true
             },
             "medium": {
               "type": "object",
-              "properties": {
-              },
+              "properties": {},
               "additionalProperties": true,
               "description": "estimate for medium time horizon",
               "x-bitcoin-optional": true
             },
             "long": {
               "type": "object",
-              "properties": {
-              },
+              "properties": {},
               "additionalProperties": true,
               "description": "estimate for long time horizon",
               "x-bitcoin-optional": true
@@ -3123,9 +2947,7 @@
               "description": "block number where estimate was found\nThe request target will be clamped between 2 and the highest target\nfee estimation is able to return based on how long it has been running.\nAn error is returned if not enough transactions and blocks\nhave been observed to make an estimate for any number of blocks."
             }
           },
-          "required": [
-            "blocks"
-          ],
+          "required": ["blocks"],
           "additionalProperties": false
         }
       },
@@ -3180,9 +3002,7 @@
               "description": "If the transaction has a complete set of signatures"
             }
           },
-          "required": [
-            "complete"
-          ],
+          "required": ["complete"],
           "additionalProperties": false
         }
       },
@@ -3288,8 +3108,7 @@
                   "description": "The zero-based output index, before a change output is added."
                 },
                 "description": "The integers.\nThe fee will be equally deducted from the amount of each specified output.\nThose recipients will receive less bitcoins than you enter in their corresponding amount field.\nIf no outputs are specified here, the sender pays the fee.",
-                "default": [
-                ]
+                "default": []
               },
               "input_weights": {
                 "type": "array",
@@ -3311,11 +3130,7 @@
                       "description": "The maximum weight for this input, including the weight of the outpoint and sequence number. Note that serialized signature sizes are not guaranteed to be consistent, so the maximum DER signatures size of 73 bytes should be used when considering ECDSA signatures.Remember to convert serialized sizes to weight units when necessary."
                     }
                   },
-                  "required": [
-                    "txid",
-                    "vout",
-                    "weight"
-                  ],
+                  "required": ["txid", "vout", "weight"],
                   "additionalProperties": false
                 },
                 "description": "Inputs and their corresponding weights"
@@ -3354,8 +3169,7 @@
                       "description": "A public key"
                     },
                     "description": "Public keys involved in this transaction.",
-                    "default": [
-                    ]
+                    "default": []
                   },
                   "scripts": {
                     "type": "array",
@@ -3366,8 +3180,7 @@
                       "description": "A script"
                     },
                     "description": "Scripts involved in this transaction.",
-                    "default": [
-                    ]
+                    "default": []
                   },
                   "descriptors": {
                     "type": "array",
@@ -3376,8 +3189,7 @@
                       "description": "A descriptor"
                     },
                     "description": "Descriptors that provide solving data for this transaction.",
-                    "default": [
-                    ]
+                    "default": []
                   }
                 },
                 "additionalProperties": false,
@@ -3423,11 +3235,7 @@
               "description": "The position of the added change output, or -1"
             }
           },
-          "required": [
-            "hex",
-            "fee",
-            "changepos"
-          ],
+          "required": ["hex", "fee", "changepos"],
           "additionalProperties": false
         }
       },
@@ -3439,12 +3247,10 @@
       "summary": "has been replaced by the -generate cli option. Refer to -help for more information.",
       "description": "has been replaced by the -generate cli option. Refer to -help for more information.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
-        "schema": {
-        }
+        "schema": {}
       },
       "x-bitcoin-category": "hidden"
     },
@@ -3507,9 +3313,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "hash"
-          ],
+          "required": ["hash"],
           "additionalProperties": false
         }
       },
@@ -3664,20 +3468,13 @@
                       "description": "connection, inbound or outbound"
                     }
                   },
-                  "required": [
-                    "address",
-                    "connected"
-                  ],
+                  "required": ["address", "connected"],
                   "additionalProperties": false
                 },
                 "description": "Only when connected = true"
               }
             },
-            "required": [
-              "addednode",
-              "connected",
-              "addresses"
-            ],
+            "required": ["addednode", "connected", "addresses"],
             "additionalProperties": false
           }
         }
@@ -3713,9 +3510,7 @@
                 "description": "Purpose of address (\"send\" for sending address, \"receive\" for receiving address)"
               }
             },
-            "required": [
-              "purpose"
-            ],
+            "required": ["purpose"],
             "additionalProperties": false,
             "description": "json object with information about address"
           },
@@ -3839,8 +3634,7 @@
             "embedded": {
               "type": "object",
               "x-documentation-commentary": "Includes all getaddressinfo output fields for the embedded address, excluding metadata (timestamp, hdkeypath, hdseedid)\nand relation to the wallet (ismine).",
-              "properties": {
-              },
+              "properties": {},
               "additionalProperties": true,
               "description": "Information about the address embedded in P2SH or P2WSH, if relevant and known.",
               "x-bitcoin-optional": true
@@ -3905,8 +3699,7 @@
       "summary": "Provides information about the node's address manager by returning the number of addresses in the `new` and `tried` tables and their sum for all networks.",
       "description": "Provides information about the node's address manager by returning the number of addresses in the `new` and `tried` tables and their sum for all networks.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -3927,11 +3720,7 @@
                 "description": "total number of addresses in both new/tried tables"
               }
             },
-            "required": [
-              "new",
-              "tried",
-              "total"
-            ],
+            "required": ["new", "tried", "total"],
             "additionalProperties": false,
             "description": "the network (ipv4, ipv6, onion, i2p, cjdns, all_networks)"
           },
@@ -4004,8 +3793,7 @@
       "summary": "Returns an object with all balances in BTC.",
       "description": "Returns an object with all balances in BTC.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -4036,11 +3824,7 @@
                   "x-bitcoin-optional": true
                 }
               },
-              "required": [
-                "trusted",
-                "untrusted_pending",
-                "immature"
-              ],
+              "required": ["trusted", "untrusted_pending", "immature"],
               "additionalProperties": false,
               "description": "balances from outputs that the wallet can sign"
             },
@@ -4058,18 +3842,12 @@
                   "description": "height of the block this information was generated on"
                 }
               },
-              "required": [
-                "hash",
-                "height"
-              ],
+              "required": ["hash", "height"],
               "additionalProperties": false,
               "description": "hash and height of the block this information was generated on"
             }
           },
-          "required": [
-            "mine",
-            "lastprocessedblock"
-          ],
+          "required": ["mine", "lastprocessedblock"],
           "additionalProperties": false
         }
       },
@@ -4081,8 +3859,7 @@
       "summary": "Returns the hash of the best (tip) block in the most-work fully-validated chain.",
       "description": "Returns the hash of the best (tip) block in the most-work fully-validated chain.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -4122,9 +3899,7 @@
           },
           "required": false,
           "description": "0 for hex-encoded data, 1 for a JSON object, 2 for JSON object with transaction data, and 3 for JSON object with transaction data including prevout information for inputs",
-          "x-bitcoin-aliases": [
-            "verbose"
-          ]
+          "x-bitcoin-aliases": ["verbose"]
         }
       ],
       "result": {
@@ -4286,16 +4061,12 @@
                         "description": "The transaction fee in BTC, omitted if block undo data is not available"
                       }
                     },
-                    "required": [
-                      "fee"
-                    ],
+                    "required": ["fee"],
                     "additionalProperties": true
                   }
                 }
               },
-              "required": [
-                "tx"
-              ],
+              "required": ["tx"],
               "additionalProperties": true,
               "x-bitcoin-condition": "for verbosity = 2"
             },
@@ -4357,42 +4128,26 @@
                                       "description": "The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)"
                                     }
                                   },
-                                  "required": [
-                                    "asm",
-                                    "desc",
-                                    "hex",
-                                    "type"
-                                  ],
+                                  "required": ["asm", "desc", "hex", "type"],
                                   "additionalProperties": false
                                 }
                               },
-                              "required": [
-                                "generated",
-                                "height",
-                                "value",
-                                "scriptPubKey"
-                              ],
+                              "required": ["generated", "height", "value", "scriptPubKey"],
                               "additionalProperties": false,
                               "description": "(Only if undo information is available)"
                             }
                           },
-                          "required": [
-                            "prevout"
-                          ],
+                          "required": ["prevout"],
                           "additionalProperties": true
                         }
                       }
                     },
-                    "required": [
-                      "vin"
-                    ],
+                    "required": ["vin"],
                     "additionalProperties": false
                   }
                 }
               },
-              "required": [
-                "tx"
-              ],
+              "required": ["tx"],
               "additionalProperties": true,
               "x-bitcoin-condition": "for verbosity = 3"
             }
@@ -4407,8 +4162,7 @@
       "summary": "Returns an object containing various state info regarding blockchain processing.",
       "description": "Returns an object containing various state info regarding blockchain processing.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -4537,8 +4291,7 @@
       "summary": "Returns the height of the most-work fully-validated chain.",
       "description": "Returns the height of the most-work fully-validated chain.\nThe genesis block has height 0.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -4595,10 +4348,7 @@
               "description": "the hex-encoded filter header"
             }
           },
-          "required": [
-            "filter",
-            "header"
-          ],
+          "required": ["filter", "header"],
           "additionalProperties": false
         }
       },
@@ -4636,8 +4386,7 @@
         "name": "result",
         "schema": {
           "type": "object",
-          "properties": {
-          },
+          "properties": {},
           "additionalProperties": false
         }
       },
@@ -4836,10 +4585,7 @@
             "type": "number",
             "description": "The block hash or height of the target block",
             "x-bitcoin-skip-type-check": true,
-            "x-bitcoin-type-string": [
-              "",
-              "string or numeric"
-            ]
+            "x-bitcoin-type-string": ["", "string or numeric"]
           },
           "required": true,
           "description": "The block hash or height of the target block"
@@ -5109,9 +4855,7 @@
                 "description": "proposed block data to check, encoded in hexadecimal; valid only for mode=\"proposal\""
               }
             },
-            "required": [
-              "rules"
-            ],
+            "required": ["rules"],
             "additionalProperties": false,
             "description": "Format of the template"
           },
@@ -5215,15 +4959,7 @@
                         "description": "total transaction weight, as counted for purposes of block limits"
                       }
                     },
-                    "required": [
-                      "data",
-                      "txid",
-                      "hash",
-                      "depends",
-                      "fee",
-                      "sigops",
-                      "weight"
-                    ],
+                    "required": ["data", "txid", "hash", "depends", "fee", "sigops", "weight"],
                     "additionalProperties": false
                   },
                   "description": "contents of non-coinbase transactions that should be included in the next block"
@@ -5346,8 +5082,7 @@
       "summary": "Return information about chainstates.",
       "description": "Return information about chainstates.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -5428,10 +5163,7 @@
               "description": "list of the chainstates ordered by work, with the most-work (active) chainstate last"
             }
           },
-          "required": [
-            "headers",
-            "chainstates"
-          ],
+          "required": ["headers", "chainstates"],
           "additionalProperties": false
         }
       },
@@ -5443,8 +5175,7 @@
       "summary": "Return information about all known tips in the block tree, including the main chain as well as orphaned branches.",
       "description": "Return information about all known tips in the block tree, including the main chain as well as orphaned branches.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -5471,12 +5202,7 @@
                 "description": "status of the chain, \"active\" for the main chain\nPossible values for status:\n1.  \"invalid\"               This branch contains at least one invalid block\n2.  \"headers-only\"          Not all blocks for this branch are available, but the headers are valid\n3.  \"valid-headers\"         All blocks are available for this branch, but they were never fully validated\n4.  \"valid-fork\"            This branch is not part of the active chain, but is fully validated\n5.  \"active\"                This is the tip of the active main chain, which is certainly valid"
               }
             },
-            "required": [
-              "height",
-              "hash",
-              "branchlen",
-              "status"
-            ],
+            "required": ["height", "hash", "branchlen", "status"],
             "additionalProperties": false
           }
         }
@@ -5575,8 +5301,7 @@
       "summary": "Returns the number of connections to other nodes.",
       "description": "Returns the number of connections to other nodes.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -5705,11 +5430,7 @@
                             "x-bitcoin-optional": true
                           }
                         },
-                        "required": [
-                          "period",
-                          "elapsed",
-                          "count"
-                        ],
+                        "required": ["period", "elapsed", "count"],
                         "additionalProperties": false,
                         "description": "numeric statistics about signalling for a softfork (only for \"started\" and \"locked_in\" status)",
                         "x-bitcoin-optional": true
@@ -5733,22 +5454,14 @@
                     "x-bitcoin-optional": true
                   }
                 },
-                "required": [
-                  "type",
-                  "active"
-                ],
+                "required": ["type", "active"],
                 "additionalProperties": false,
                 "description": "name of the deployment"
               },
               "x-bitcoin-object-dynamic": true
             }
           },
-          "required": [
-            "hash",
-            "height",
-            "script_flags",
-            "deployments"
-          ],
+          "required": ["hash", "height", "script_flags", "deployments"],
           "additionalProperties": false
         }
       },
@@ -5811,9 +5524,7 @@
                     "default": 1000
                   }
                 },
-                "required": [
-                  "desc"
-                ],
+                "required": ["desc"],
                 "additionalProperties": false,
                 "description": "An object with output descriptor and metadata"
               }
@@ -5915,12 +5626,7 @@
                           "description": "The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)"
                         }
                       },
-                      "required": [
-                        "asm",
-                        "desc",
-                        "hex",
-                        "type"
-                      ],
+                      "required": ["asm", "desc", "hex", "type"],
                       "additionalProperties": false
                     }
                   },
@@ -5996,22 +5702,11 @@
                           "description": "The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)"
                         }
                       },
-                      "required": [
-                        "asm",
-                        "desc",
-                        "hex",
-                        "type"
-                      ],
+                      "required": ["asm", "desc", "hex", "type"],
                       "additionalProperties": false
                     }
                   },
-                  "required": [
-                    "type",
-                    "amount",
-                    "txid",
-                    "vout",
-                    "output_spk"
-                  ],
+                  "required": ["type", "amount", "txid", "vout", "output_spk"],
                   "additionalProperties": false
                 }
               ],
@@ -6020,9 +5715,7 @@
               "x-bitcoin-skip-type-check": true
             }
           },
-          "required": [
-            "activity"
-          ],
+          "required": ["activity"],
           "additionalProperties": false
         }
       },
@@ -6079,13 +5772,7 @@
               "description": "Whether the input descriptor contained at least one private key"
             }
           },
-          "required": [
-            "descriptor",
-            "checksum",
-            "isrange",
-            "issolvable",
-            "hasprivatekeys"
-          ],
+          "required": ["descriptor", "checksum", "isrange", "issolvable", "hasprivatekeys"],
           "additionalProperties": false
         }
       },
@@ -6097,8 +5784,7 @@
       "summary": "Returns the proof-of-work difficulty as a multiple of the minimum difficulty.",
       "description": "Returns the proof-of-work difficulty as a multiple of the minimum difficulty.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -6171,20 +5857,13 @@
                       "description": "Whether this descriptor is currently used to generate new addresses"
                     }
                   },
-                  "required": [
-                    "desc",
-                    "active"
-                  ],
+                  "required": ["desc", "active"],
                   "additionalProperties": false
                 },
                 "description": "Array of descriptor objects that use this HD key"
               }
             },
-            "required": [
-              "xpub",
-              "has_private",
-              "descriptors"
-            ],
+            "required": ["xpub", "has_private", "descriptors"],
             "additionalProperties": false
           }
         }
@@ -6224,10 +5903,7 @@
                 "description": "The block height to which the index is synced"
               }
             },
-            "required": [
-              "synced",
-              "best_block_height"
-            ],
+            "required": ["synced", "best_block_height"],
             "additionalProperties": false,
             "description": "The name of the index"
           },
@@ -6289,21 +5965,12 @@
                       "description": "Number unused chunks"
                     }
                   },
-                  "required": [
-                    "used",
-                    "free",
-                    "total",
-                    "locked",
-                    "chunks_used",
-                    "chunks_free"
-                  ],
+                  "required": ["used", "free", "total", "locked", "chunks_used", "chunks_free"],
                   "additionalProperties": false,
                   "description": "Information about locked memory manager"
                 }
               },
-              "required": [
-                "locked"
-              ],
+              "required": ["locked"],
               "additionalProperties": false,
               "x-bitcoin-condition": "mode \"stats\""
             },
@@ -6437,13 +6104,7 @@
                         "description": "transaction fees of chunk, denominated in BTC"
                       }
                     },
-                    "required": [
-                      "base",
-                      "modified",
-                      "ancestor",
-                      "descendant",
-                      "chunk"
-                    ],
+                    "required": ["base", "modified", "ancestor", "descendant", "chunk"],
                     "additionalProperties": false
                   },
                   "depends": {
@@ -6558,21 +6219,13 @@
                     "description": "transactions in this chunk in mining order"
                   }
                 },
-                "required": [
-                  "chunkfee",
-                  "chunkweight",
-                  "txs"
-                ],
+                "required": ["chunkfee", "chunkweight", "txs"],
                 "additionalProperties": false
               },
               "description": "chunks in this cluster (in mining order)"
             }
           },
-          "required": [
-            "clusterweight",
-            "txcount",
-            "chunks"
-          ],
+          "required": ["clusterweight", "txcount", "chunks"],
           "additionalProperties": false
         }
       },
@@ -6698,13 +6351,7 @@
                         "description": "transaction fees of chunk, denominated in BTC"
                       }
                     },
-                    "required": [
-                      "base",
-                      "modified",
-                      "ancestor",
-                      "descendant",
-                      "chunk"
-                    ],
+                    "required": ["base", "modified", "ancestor", "descendant", "chunk"],
                     "additionalProperties": false
                   },
                   "depends": {
@@ -6859,13 +6506,7 @@
                   "description": "transaction fees of chunk, denominated in BTC"
                 }
               },
-              "required": [
-                "base",
-                "modified",
-                "ancestor",
-                "descendant",
-                "chunk"
-              ],
+              "required": ["base", "modified", "ancestor", "descendant", "chunk"],
               "additionalProperties": false
             },
             "depends": {
@@ -6925,8 +6566,7 @@
       "summary": "Returns the feerate diagram for the whole mempool.",
       "description": "Returns the feerate diagram for the whole mempool.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -6943,10 +6583,7 @@
                 "description": "cumulative fee"
               }
             },
-            "required": [
-              "weight",
-              "fee"
-            ],
+            "required": ["weight", "fee"],
             "additionalProperties": false
           },
           "x-bitcoin-condition": "mempool chunks"
@@ -6960,8 +6597,7 @@
       "summary": "Returns details on the active state of the TX memory pool.",
       "description": "Returns details on the active state of the TX memory pool.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -7059,8 +6695,7 @@
       "summary": "Returns a json object containing mining-related information.",
       "description": "Returns a json object containing mining-related information.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -7144,12 +6779,7 @@
                   "description": "The next target"
                 }
               },
-              "required": [
-                "height",
-                "bits",
-                "difficulty",
-                "target"
-              ],
+              "required": ["height", "bits", "difficulty", "target"],
               "additionalProperties": false,
               "description": "The next block"
             },
@@ -7185,8 +6815,7 @@
       "summary": "Returns information about network traffic, including bytes in, bytes out,",
       "description": "Returns information about network traffic, including bytes in, bytes out,\nand current system time.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -7244,12 +6873,7 @@
               "additionalProperties": false
             }
           },
-          "required": [
-            "totalbytesrecv",
-            "totalbytessent",
-            "timemillis",
-            "uploadtarget"
-          ],
+          "required": ["totalbytesrecv", "totalbytessent", "timemillis", "uploadtarget"],
           "additionalProperties": false
         }
       },
@@ -7298,8 +6922,7 @@
       "summary": "Returns an object containing various state info regarding P2P networking.",
       "description": "Returns an object containing various state info regarding P2P networking.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -7418,11 +7041,7 @@
                     "description": "relative score"
                   }
                 },
-                "required": [
-                  "address",
-                  "port",
-                  "score"
-                ],
+                "required": ["address", "port", "score"],
                 "additionalProperties": false
               },
               "description": "list of local addresses"
@@ -7553,13 +7172,7 @@
                 "description": "The network (ipv4, ipv6, onion, i2p, cjdns) the node connected through"
               }
             },
-            "required": [
-              "time",
-              "services",
-              "address",
-              "port",
-              "network"
-            ],
+            "required": ["time", "services", "address", "port", "network"],
             "additionalProperties": false
           }
         }
@@ -7572,14 +7185,12 @@
       "summary": "Return an OpenRPC document describing the RPC API.",
       "description": "Return an OpenRPC document describing the RPC API.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
           "type": "object",
-          "properties": {
-          },
+          "properties": {},
           "additionalProperties": false,
           "description": "OpenRPC document"
         }
@@ -7655,14 +7266,7 @@
                     }
                   }
                 },
-                "required": [
-                  "txid",
-                  "wtxid",
-                  "bytes",
-                  "vsize",
-                  "weight",
-                  "from"
-                ],
+                "required": ["txid", "wtxid", "bytes", "vsize", "weight", "from"],
                 "additionalProperties": false
               },
               "x-bitcoin-condition": "for verbose = 1"
@@ -7710,15 +7314,7 @@
                     "description": "The serialized, hex-encoded transaction data"
                   }
                 },
-                "required": [
-                  "txid",
-                  "wtxid",
-                  "bytes",
-                  "vsize",
-                  "weight",
-                  "from",
-                  "hex"
-                ],
+                "required": ["txid", "wtxid", "bytes", "vsize", "weight", "from", "hex"],
                 "additionalProperties": false
               },
               "x-bitcoin-condition": "for verbose = 2"
@@ -7734,8 +7330,7 @@
       "summary": "Returns data about each connected network peer as a json array of objects.",
       "description": "Returns data about each connected network peer as a json array of objects.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -7994,8 +7589,7 @@
       "summary": "Returns a map of all user-created (see prioritisetransaction) fee deltas by txid, and whether the tx is present in mempool.",
       "description": "Returns a map of all user-created (see prioritisetransaction) fee deltas by txid, and whether the tx is present in mempool.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -8017,10 +7611,7 @@
                 "x-bitcoin-optional": true
               }
             },
-            "required": [
-              "fee_delta",
-              "in_mempool"
-            ],
+            "required": ["fee_delta", "in_mempool"],
             "additionalProperties": false
           },
           "x-bitcoin-object-dynamic": true,
@@ -8035,8 +7626,7 @@
       "summary": "EXPERIMENTAL warning: this call may be changed in future releases.",
       "description": "EXPERIMENTAL warning: this call may be changed in future releases.\n\nReturns information on all address manager entries for the new and tried tables.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -8252,13 +7842,7 @@
                         "description": "transaction fees of chunk, denominated in BTC"
                       }
                     },
-                    "required": [
-                      "base",
-                      "modified",
-                      "ancestor",
-                      "descendant",
-                      "chunk"
-                    ],
+                    "required": ["base", "modified", "ancestor", "descendant", "chunk"],
                     "additionalProperties": false
                   },
                   "depends": {
@@ -8329,10 +7913,7 @@
                   "description": "The mempool sequence value."
                 }
               },
-              "required": [
-                "txids",
-                "mempool_sequence"
-              ],
+              "required": ["txids", "mempool_sequence"],
               "additionalProperties": false,
               "x-bitcoin-condition": "for verbose = false and mempool_sequence = true"
             }
@@ -8369,9 +7950,7 @@
           },
           "required": false,
           "description": "0 for hex-encoded data, 1 for a JSON object, and 2 for JSON object with fee and prevout",
-          "x-bitcoin-aliases": [
-            "verbose"
-          ]
+          "x-bitcoin-aliases": ["verbose"]
         },
         {
           "name": "blockhash",
@@ -8502,10 +8081,7 @@
                             "description": "The raw signature script bytes, hex-encoded"
                           }
                         },
-                        "required": [
-                          "asm",
-                          "hex"
-                        ],
+                        "required": ["asm", "hex"],
                         "additionalProperties": false,
                         "description": "The script (if not coinbase transaction)",
                         "x-bitcoin-optional": true
@@ -8525,9 +8101,7 @@
                         "description": "The script sequence number"
                       }
                     },
-                    "required": [
-                      "sequence"
-                    ],
+                    "required": ["sequence"],
                     "additionalProperties": false
                   }
                 },
@@ -8572,20 +8146,11 @@
                             "description": "The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)"
                           }
                         },
-                        "required": [
-                          "asm",
-                          "desc",
-                          "hex",
-                          "type"
-                        ],
+                        "required": ["asm", "desc", "hex", "type"],
                         "additionalProperties": false
                       }
                     },
-                    "required": [
-                      "value",
-                      "n",
-                      "scriptPubKey"
-                    ],
+                    "required": ["value", "n", "scriptPubKey"],
                     "additionalProperties": false
                   }
                 }
@@ -8663,21 +8228,11 @@
                                 "description": "The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)"
                               }
                             },
-                            "required": [
-                              "asm",
-                              "desc",
-                              "hex",
-                              "type"
-                            ],
+                            "required": ["asm", "desc", "hex", "type"],
                             "additionalProperties": false
                           }
                         },
-                        "required": [
-                          "generated",
-                          "height",
-                          "value",
-                          "scriptPubKey"
-                        ],
+                        "required": ["generated", "height", "value", "scriptPubKey"],
                         "additionalProperties": false,
                         "description": "The previous output, omitted if block undo data is not available",
                         "x-bitcoin-optional": true
@@ -8688,9 +8243,7 @@
                   }
                 }
               },
-              "required": [
-                "vin"
-              ],
+              "required": ["vin"],
               "additionalProperties": true,
               "x-bitcoin-condition": "for verbosity = 2"
             }
@@ -8799,8 +8352,7 @@
       "summary": "Returns details of the RPC server.",
       "description": "Returns details of the RPC server.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -8820,10 +8372,7 @@
                     "description": "The running time in microseconds"
                   }
                 },
-                "required": [
-                  "method",
-                  "duration"
-                ],
+                "required": ["method", "duration"],
                 "additionalProperties": false,
                 "description": "Information about an active command"
               },
@@ -8834,10 +8383,7 @@
               "description": "The complete file path to the debug log"
             }
           },
-          "required": [
-            "active_commands",
-            "logpath"
-          ],
+          "required": ["active_commands", "logpath"],
           "additionalProperties": false
         }
       },
@@ -9060,12 +8606,7 @@
                     "x-bitcoin-optional": true
                   }
                 },
-                "required": [
-                  "category",
-                  "amount",
-                  "vout",
-                  "abandoned"
-                ],
+                "required": ["category", "amount", "vout", "abandoned"],
                 "additionalProperties": false
               }
             },
@@ -9149,10 +8690,7 @@
                             "description": "The raw signature script bytes, hex-encoded"
                           }
                         },
-                        "required": [
-                          "asm",
-                          "hex"
-                        ],
+                        "required": ["asm", "hex"],
                         "additionalProperties": false,
                         "description": "The script (if not coinbase transaction)",
                         "x-bitcoin-optional": true
@@ -9172,9 +8710,7 @@
                         "description": "The script sequence number"
                       }
                     },
-                    "required": [
-                      "sequence"
-                    ],
+                    "required": ["sequence"],
                     "additionalProperties": false
                   }
                 },
@@ -9219,12 +8755,7 @@
                             "description": "The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)"
                           }
                         },
-                        "required": [
-                          "asm",
-                          "desc",
-                          "hex",
-                          "type"
-                        ],
+                        "required": ["asm", "desc", "hex", "type"],
                         "additionalProperties": false
                       },
                       "ischange": {
@@ -9233,11 +8764,7 @@
                         "x-bitcoin-optional": true
                       }
                     },
-                    "required": [
-                      "value",
-                      "n",
-                      "scriptPubKey"
-                    ],
+                    "required": ["value", "n", "scriptPubKey"],
                     "additionalProperties": false
                   }
                 }
@@ -9271,10 +8798,7 @@
                   "description": "height of the block this information was generated on"
                 }
               },
-              "required": [
-                "hash",
-                "height"
-              ],
+              "required": ["hash", "height"],
               "additionalProperties": false,
               "description": "hash and height of the block this information was generated on"
             }
@@ -9387,12 +8911,7 @@
                       "x-bitcoin-optional": true
                     }
                   },
-                  "required": [
-                    "asm",
-                    "desc",
-                    "hex",
-                    "type"
-                  ],
+                  "required": ["asm", "desc", "hex", "type"],
                   "additionalProperties": false
                 },
                 "coinbase": {
@@ -9400,13 +8919,7 @@
                   "description": "Coinbase or not"
                 }
               },
-              "required": [
-                "bestblock",
-                "confirmations",
-                "value",
-                "scriptPubKey",
-                "coinbase"
-              ],
+              "required": ["bestblock", "confirmations", "value", "scriptPubKey", "coinbase"],
               "additionalProperties": false,
               "x-bitcoin-condition": "Otherwise"
             }
@@ -9480,10 +8993,7 @@
             "type": "number",
             "description": "The block hash or height of the target height (only available with coinstatsindex).",
             "x-bitcoin-skip-type-check": true,
-            "x-bitcoin-type-string": [
-              "",
-              "string or numeric"
-            ],
+            "x-bitcoin-type-string": ["", "string or numeric"],
             "x-bitcoin-default-hint": "the current best block"
           },
           "required": false,
@@ -9605,12 +9115,7 @@
                       "description": "Fee rewards that miners did not claim in their coinbase transaction"
                     }
                   },
-                  "required": [
-                    "genesis_block",
-                    "bip30",
-                    "scripts",
-                    "unclaimed_rewards"
-                  ],
+                  "required": ["genesis_block", "bip30", "scripts", "unclaimed_rewards"],
                   "additionalProperties": false,
                   "description": "Detailed view of the unspendable categories"
                 }
@@ -9627,13 +9132,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "height",
-            "bestblock",
-            "txouts",
-            "bogosize",
-            "total_amount"
-          ],
+          "required": ["height", "bestblock", "txouts", "bogosize", "total_amount"],
           "additionalProperties": false
         }
       },
@@ -9664,10 +9163,7 @@
                   "description": "The output number"
                 }
               },
-              "required": [
-                "txid",
-                "vout"
-              ],
+              "required": ["txid", "vout"],
               "additionalProperties": false
             },
             "description": "The transaction outputs that we want to check, and within each, the txid (string) vout (numeric)."
@@ -9701,10 +9197,7 @@
                 "x-bitcoin-optional": true
               }
             },
-            "required": [
-              "txid",
-              "vout"
-            ],
+            "required": ["txid", "vout"],
             "additionalProperties": false
           }
         }
@@ -9717,8 +9210,7 @@
       "summary": "Returns an object containing various wallet state info.",
       "description": "Returns an object containing various wallet state info.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -9780,10 +9272,7 @@
                   "description": "scanning progress percentage [0.0, 1.0]"
                 }
               },
-              "required": [
-                "duration",
-                "progress"
-              ],
+              "required": ["duration", "progress"],
               "additionalProperties": false,
               "description": "current scanning details, or false if no scan is in progress",
               "x-bitcoin-skip-type-check": true
@@ -9828,10 +9317,7 @@
                   "description": "height of the block this information was generated on"
                 }
               },
-              "required": [
-                "hash",
-                "height"
-              ],
+              "required": ["hash", "height"],
               "additionalProperties": false,
               "description": "hash and height of the block this information was generated on"
             }
@@ -9930,10 +9416,7 @@
                 "timestamp": {
                   "type": "number",
                   "description": "Time from which to start rescanning the blockchain for this descriptor, in UNIX epoch time\nUse the string \"now\" to substitute the current synced blockchain time.\n\"now\" can be specified to bypass scanning, for outputs which are known to never have been used, and\n0 can be specified to scan the entire blockchain. Blocks up to 2 hours before the earliest timestamp\nof all descriptors being imported will be scanned as well as the mempool.",
-                  "x-bitcoin-type-string": [
-                    "timestamp | \"now\"",
-                    "integer / string"
-                  ]
+                  "x-bitcoin-type-string": ["timestamp | \"now\"", "integer / string"]
                 },
                 "internal": {
                   "type": "boolean",
@@ -9946,10 +9429,7 @@
                   "default": ""
                 }
               },
-              "required": [
-                "desc",
-                "timestamp"
-              ],
+              "required": ["desc", "timestamp"],
               "additionalProperties": false
             },
             "description": "Data to be imported",
@@ -9979,15 +9459,12 @@
               "error": {
                 "type": "object",
                 "x-documentation-commentary": "JSONRPC error",
-                "properties": {
-                },
+                "properties": {},
                 "additionalProperties": true,
                 "x-bitcoin-optional": true
               }
             },
-            "required": [
-              "success"
-            ],
+            "required": ["success"],
             "additionalProperties": false
           },
           "description": "Response is an array with the same size as the input that has the execution result"
@@ -10043,8 +9520,7 @@
         "name": "result",
         "schema": {
           "type": "object",
-          "properties": {
-          },
+          "properties": {},
           "additionalProperties": false
         }
       },
@@ -10176,8 +9652,7 @@
       "summary": "Lists groups of addresses which have had their common ownership",
       "description": "Lists groups of addresses which have had their common ownership\nmade public by common use as inputs or as the resulting change\nin past transactions",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -10216,8 +9691,7 @@
       "summary": "List all manually banned IPs/Subnets.",
       "description": "List all manually banned IPs/Subnets.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -10340,20 +9814,13 @@
                     "x-bitcoin-optional": true
                   }
                 },
-                "required": [
-                  "desc",
-                  "timestamp",
-                  "active"
-                ],
+                "required": ["desc", "timestamp", "active"],
                 "additionalProperties": false
               },
               "description": "Array of descriptor objects (sorted by descriptor string representation)"
             }
           },
-          "required": [
-            "wallet_name",
-            "descriptors"
-          ],
+          "required": ["wallet_name", "descriptors"],
           "additionalProperties": false
         }
       },
@@ -10394,8 +9861,7 @@
       "summary": "Returns list of temporarily unspendable outputs.",
       "description": "Returns list of temporarily unspendable outputs.\nSee the lockunspent call to lock and unlock transactions for spending.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -10414,10 +9880,7 @@
                 "description": "The vout value"
               }
             },
-            "required": [
-              "txid",
-              "vout"
-            ],
+            "required": ["txid", "vout"],
             "additionalProperties": false
           }
         }
@@ -10515,13 +9978,7 @@
                 }
               }
             },
-            "required": [
-              "address",
-              "amount",
-              "confirmations",
-              "label",
-              "txids"
-            ],
+            "required": ["address", "amount", "confirmations", "label", "txids"],
             "additionalProperties": false
           }
         }
@@ -10597,11 +10054,7 @@
                 "description": "The label of the receiving address. The default label is \"\""
               }
             },
-            "required": [
-              "amount",
-              "confirmations",
-              "label"
-            ],
+            "required": ["amount", "confirmations", "label"],
             "additionalProperties": false
           }
         }
@@ -10866,10 +10319,7 @@
               "description": "The hash of the block (target_confirmations-1) from the best block on the main chain, or the genesis hash if the referenced block does not exist yet. This is typically used to feed back into listsinceblock the next time you call it. So you would generally use a target_confirmations of say 6, so you will be continually re-notified of transactions until they've reached 6 confirmations plus any new ones"
             }
           },
-          "required": [
-            "transactions",
-            "lastblock"
-          ],
+          "required": ["transactions", "lastblock"],
           "additionalProperties": false
         }
       },
@@ -11135,8 +10585,7 @@
               "description": "bitcoin address"
             },
             "description": "The bitcoin addresses to filter",
-            "default": [
-            ]
+            "default": []
           },
           "required": false,
           "description": "The bitcoin addresses to filter"
@@ -11335,8 +10784,7 @@
       "summary": "Returns a list of wallets in the wallet directory.",
       "description": "Returns a list of wallets in the wallet directory.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -11360,16 +10808,12 @@
                     "x-bitcoin-optional": true
                   }
                 },
-                "required": [
-                  "name"
-                ],
+                "required": ["name"],
                 "additionalProperties": false
               }
             }
           },
-          "required": [
-            "wallets"
-          ],
+          "required": ["wallets"],
           "additionalProperties": false
         }
       },
@@ -11381,8 +10825,7 @@
       "summary": "Returns a list of currently loaded wallets.",
       "description": "Returns a list of currently loaded wallets.\nFor full information on the wallet, use \"getwalletinfo\"",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -11436,12 +10879,7 @@
               "description": "the absolute path that the snapshot was loaded from"
             }
           },
-          "required": [
-            "coins_loaded",
-            "tip_hash",
-            "base_height",
-            "path"
-          ],
+          "required": ["coins_loaded", "tip_hash", "base_height", "path"],
           "additionalProperties": false
         }
       },
@@ -11491,9 +10929,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "name"
-          ],
+          "required": ["name"],
           "additionalProperties": false
         }
       },
@@ -11533,15 +10969,11 @@
                   "description": "The output number"
                 }
               },
-              "required": [
-                "txid",
-                "vout"
-              ],
+              "required": ["txid", "vout"],
               "additionalProperties": false
             },
             "description": "The transaction outputs and within each, the txid (string) vout (numeric).",
-            "default": [
-            ]
+            "default": []
           },
           "required": false,
           "description": "The transaction outputs and within each, the txid (string) vout (numeric)."
@@ -11665,10 +11097,7 @@
               "description": "The location of the backup of the original wallet"
             }
           },
-          "required": [
-            "wallet_name",
-            "backup_path"
-          ],
+          "required": ["wallet_name", "backup_path"],
           "additionalProperties": false
         }
       },
@@ -11704,8 +11133,7 @@
       "summary": "Requests that a ping be sent to all other nodes, to measure ping time.",
       "description": "Requests that a ping be sent to all other nodes, to measure ping time.\nResults are provided in getpeerinfo.\nPing command is handled in queue with all other commands, so it measures processing backlog, not just network ping.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -11893,17 +11321,14 @@
                         "description": "A key-value pair. The key must be \"data\", the value is hex-encoded data that becomes a part of an OP_RETURN output"
                       }
                     },
-                    "required": [
-                      "data"
-                    ],
+                    "required": ["data"],
                     "additionalProperties": false
                   }
                 ],
                 "minItems": 2,
                 "description": "The outputs specified as key-value pairs.\nEach key may only appear once, i.e. there can only be one 'data' output, and no address may be duplicated.\nAt least one output of either type must be specified.\nCannot be provided if 'original_change_index' is specified.",
                 "x-bitcoin-skip-type-check": true,
-                "default": [
-                ]
+                "default": []
               },
               "original_change_index": {
                 "type": "number",
@@ -11945,12 +11370,7 @@
               "description": "Errors encountered during processing (may be empty)."
             }
           },
-          "required": [
-            "psbt",
-            "origfee",
-            "fee",
-            "errors"
-          ],
+          "required": ["psbt", "origfee", "fee", "errors"],
           "additionalProperties": false
         }
       },
@@ -12051,10 +11471,7 @@
               "description": "The height of the last rescanned block. May be null in rare cases if there was a reorg and the call didn't scan any blocks because they were already scanned in the background."
             }
           },
-          "required": [
-            "start_height",
-            "stop_height"
-          ],
+          "required": ["start_height", "stop_height"],
           "additionalProperties": false
         }
       },
@@ -12113,9 +11530,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "name"
-          ],
+          "required": ["name"],
           "additionalProperties": false
         }
       },
@@ -12127,8 +11542,7 @@
       "summary": "Dumps the mempool to disk. It will fail until the previous dump is fully loaded.",
       "description": "Dumps the mempool to disk. It will fail until the previous dump is fully loaded.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -12139,9 +11553,7 @@
               "description": "the directory and file where the mempool was saved"
             }
           },
-          "required": [
-            "filename"
-          ],
+          "required": ["filename"],
           "additionalProperties": false
         }
       },
@@ -12198,9 +11610,7 @@
                     "default": 1000
                   }
                 },
-                "required": [
-                  "desc"
-                ],
+                "required": ["desc"],
                 "additionalProperties": false,
                 "description": "An object with output descriptor and metadata"
               }
@@ -12294,12 +11704,7 @@
                   "description": "true if the scan process was not aborted"
                 }
               },
-              "required": [
-                "from_height",
-                "to_height",
-                "relevant_blocks",
-                "completed"
-              ],
+              "required": ["from_height", "to_height", "relevant_blocks", "completed"],
               "additionalProperties": false,
               "x-bitcoin-condition": "When action=='start'; only returns after scan completes"
             },
@@ -12315,10 +11720,7 @@
                   "description": "Height of the block currently being scanned"
                 }
               },
-              "required": [
-                "progress",
-                "current_height"
-              ],
+              "required": ["progress", "current_height"],
               "additionalProperties": false,
               "x-bitcoin-condition": "when action=='status' and a scan is currently in progress"
             },
@@ -12383,9 +11785,7 @@
                     "default": 1000
                   }
                 },
-                "required": [
-                  "desc"
-                ],
+                "required": ["desc"],
                 "additionalProperties": false,
                 "description": "An object with output descriptor and metadata"
               }
@@ -12492,14 +11892,7 @@
                   "description": "The total amount of all found unspent outputs in BTC"
                 }
               },
-              "required": [
-                "success",
-                "txouts",
-                "height",
-                "bestblock",
-                "unspents",
-                "total_amount"
-              ],
+              "required": ["success", "txouts", "height", "bestblock", "unspents", "total_amount"],
               "additionalProperties": false,
               "x-bitcoin-condition": "when action=='start'; only returns after scan completes"
             },
@@ -12516,9 +11909,7 @@
                   "description": "Approximate percent complete"
                 }
               },
-              "required": [
-                "progress"
-              ],
+              "required": ["progress"],
               "additionalProperties": false,
               "x-bitcoin-condition": "when action=='status' and a scan is currently in progress"
             },
@@ -12569,9 +11960,7 @@
                     "description": "A key-value pair. The key must be \"data\", the value is hex-encoded data that becomes a part of an OP_RETURN output"
                   }
                 },
-                "required": [
-                  "data"
-                ],
+                "required": ["data"],
                 "additionalProperties": false
               }
             ],
@@ -12709,15 +12098,11 @@
                       "x-bitcoin-default-hint": "Calculated from wallet and solving data"
                     }
                   },
-                  "required": [
-                    "txid",
-                    "vout"
-                  ],
+                  "required": ["txid", "vout"],
                   "additionalProperties": false
                 },
                 "description": "Specify inputs instead of adding them automatically.",
-                "default": [
-                ]
+                "default": []
               },
               "locktime": {
                 "type": "number",
@@ -12741,8 +12126,7 @@
                   "description": "The zero-based output index, before a change output is added."
                 },
                 "description": "Outputs to subtract the fee from, specified as integer indices.\nThe fee will be equally deducted from the amount of each specified output.\nThose recipients will receive less bitcoins than you enter in their corresponding amount field.\nIf no outputs are specified here, the sender pays the fee.",
-                "default": [
-                ]
+                "default": []
               },
               "max_tx_weight": {
                 "type": "number",
@@ -12778,8 +12162,7 @@
                       "description": "A public key"
                     },
                     "description": "Public keys involved in this transaction.",
-                    "default": [
-                    ]
+                    "default": []
                   },
                   "scripts": {
                     "type": "array",
@@ -12790,8 +12173,7 @@
                       "description": "A script"
                     },
                     "description": "Scripts involved in this transaction.",
-                    "default": [
-                    ]
+                    "default": []
                   },
                   "descriptors": {
                     "type": "array",
@@ -12800,8 +12182,7 @@
                       "description": "A descriptor"
                     },
                     "description": "Descriptors that provide solving data for this transaction.",
-                    "default": [
-                    ]
+                    "default": []
                   }
                 },
                 "additionalProperties": false,
@@ -12854,9 +12235,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "complete"
-          ],
+          "required": ["complete"],
           "additionalProperties": false
         }
       },
@@ -12989,15 +12368,11 @@
                       "x-bitcoin-default-hint": "depends on the value of the 'replaceable' and 'locktime' arguments"
                     }
                   },
-                  "required": [
-                    "txid",
-                    "vout"
-                  ],
+                  "required": ["txid", "vout"],
                   "additionalProperties": false
                 },
                 "description": "Use exactly the specified inputs to build the transaction. Specifying inputs is incompatible with the send_max, minconf, and maxconf options.",
-                "default": [
-                ]
+                "default": []
               },
               "locktime": {
                 "type": "number",
@@ -13062,8 +12437,7 @@
                       "description": "A public key"
                     },
                     "description": "Public keys involved in this transaction.",
-                    "default": [
-                    ]
+                    "default": []
                   },
                   "scripts": {
                     "type": "array",
@@ -13074,8 +12448,7 @@
                       "description": "A script"
                     },
                     "description": "Scripts involved in this transaction.",
-                    "default": [
-                    ]
+                    "default": []
                   },
                   "descriptors": {
                     "type": "array",
@@ -13084,8 +12457,7 @@
                       "description": "A descriptor"
                     },
                     "description": "Descriptors that provide solving data for this transaction.",
-                    "default": [
-                    ]
+                    "default": []
                   }
                 },
                 "additionalProperties": false,
@@ -13128,9 +12500,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "complete"
-          ],
+          "required": ["complete"],
           "additionalProperties": false
         }
       },
@@ -13291,10 +12661,7 @@
                   "description": "The transaction fee reason."
                 }
               },
-              "required": [
-                "txid",
-                "fee_reason"
-              ],
+              "required": ["txid", "fee_reason"],
               "additionalProperties": false,
               "x-bitcoin-condition": "if verbose is set to true"
             }
@@ -13344,8 +12711,7 @@
         "name": "result",
         "schema": {
           "type": "object",
-          "properties": {
-          },
+          "properties": {},
           "additionalProperties": false
         }
       },
@@ -13572,10 +12938,7 @@
                   "description": "The transaction fee reason."
                 }
               },
-              "required": [
-                "txid",
-                "fee_reason"
-              ],
+              "required": ["txid", "fee_reason"],
               "additionalProperties": false,
               "x-bitcoin-condition": "if verbose is set to true"
             }
@@ -13801,10 +13164,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "flag_name",
-            "flag_state"
-          ],
+          "required": ["flag_name", "flag_state"],
           "additionalProperties": false
         }
       },
@@ -13959,11 +13319,7 @@
                   "description": "(required for Segwit inputs) the amount spent"
                 }
               },
-              "required": [
-                "txid",
-                "vout",
-                "scriptPubKey"
-              ],
+              "required": ["txid", "vout", "scriptPubKey"],
               "additionalProperties": false
             },
             "description": "The previous dependent transaction outputs"
@@ -14035,24 +13391,14 @@
                     "description": "Verification or signing error related to the input"
                   }
                 },
-                "required": [
-                  "txid",
-                  "vout",
-                  "witness",
-                  "scriptSig",
-                  "sequence",
-                  "error"
-                ],
+                "required": ["txid", "vout", "witness", "scriptSig", "sequence", "error"],
                 "additionalProperties": false
               },
               "description": "Script verification errors (if there are any)",
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "hex",
-            "complete"
-          ],
+          "required": ["hex", "complete"],
           "additionalProperties": false
         }
       },
@@ -14122,11 +13468,7 @@
                   "description": "(required for Segwit inputs) the amount spent"
                 }
               },
-              "required": [
-                "txid",
-                "vout",
-                "scriptPubKey"
-              ],
+              "required": ["txid", "vout", "scriptPubKey"],
               "additionalProperties": false
             },
             "description": "The previous dependent transaction outputs"
@@ -14198,24 +13540,14 @@
                     "description": "Verification or signing error related to the input"
                   }
                 },
-                "required": [
-                  "txid",
-                  "vout",
-                  "witness",
-                  "scriptSig",
-                  "sequence",
-                  "error"
-                ],
+                "required": ["txid", "vout", "witness", "scriptSig", "sequence", "error"],
                 "additionalProperties": false
               },
               "description": "Script verification errors (if there are any)",
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "hex",
-            "complete"
-          ],
+          "required": ["hex", "complete"],
           "additionalProperties": false
         }
       },
@@ -14270,9 +13602,7 @@
               "description": "The wallet balance change (negative means decrease)."
             }
           },
-          "required": [
-            "balance_change"
-          ],
+          "required": ["balance_change"],
           "additionalProperties": false
         }
       },
@@ -14495,9 +13825,7 @@
                         "x-bitcoin-optional": true
                       }
                     },
-                    "required": [
-                      "base"
-                    ],
+                    "required": ["base"],
                     "additionalProperties": false,
                     "description": "Transaction fees",
                     "x-bitcoin-optional": true
@@ -14508,9 +13836,7 @@
                     "x-bitcoin-optional": true
                   }
                 },
-                "required": [
-                  "txid"
-                ],
+                "required": ["txid"],
                 "additionalProperties": false,
                 "description": "transaction wtxid"
               },
@@ -14529,10 +13855,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "package_msg",
-            "tx-results"
-          ],
+          "required": ["package_msg", "tx-results"],
           "additionalProperties": false
         }
       },
@@ -14544,8 +13867,7 @@
       "summary": "Waits for the validation interface queue to catch up on everything that was there when we entered this function.",
       "description": "Waits for the validation interface queue to catch up on everything that was there when we entered this function.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -14652,11 +13974,7 @@
                     "description": "transactions whose fees and vsizes are included in effective-feerate."
                   }
                 },
-                "required": [
-                  "base",
-                  "effective-feerate",
-                  "effective-includes"
-                ],
+                "required": ["base", "effective-feerate", "effective-includes"],
                 "additionalProperties": false,
                 "description": "Transaction fees (only present if 'allowed' is true)",
                 "x-bitcoin-optional": true
@@ -14672,10 +13990,7 @@
                 "x-bitcoin-optional": true
               }
             },
-            "required": [
-              "txid",
-              "wtxid"
-            ],
+            "required": ["txid", "wtxid"],
             "additionalProperties": false
           },
           "description": "The result of the mempool acceptance test for each raw transaction in the input array.\nReturns results for each transaction in the same order they were passed in.\nTransactions that cannot be fully validated due to failures in other transactions will not contain an 'allowed' result.\n"
@@ -14735,8 +14050,7 @@
       "summary": "Returns the total uptime of the server.",
       "description": "Returns the total uptime of the server.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -14797,9 +14111,7 @@
                     "default": 1000
                   }
                 },
-                "required": [
-                  "desc"
-                ],
+                "required": ["desc"],
                 "additionalProperties": false,
                 "description": "An object with an output descriptor and extra information"
               }
@@ -14895,9 +14207,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "isvalid"
-          ],
+          "required": ["isvalid"],
           "additionalProperties": false
         }
       },
@@ -15061,10 +14371,7 @@
               "description": "Block height"
             }
           },
-          "required": [
-            "hash",
-            "height"
-          ],
+          "required": ["hash", "height"],
           "additionalProperties": false
         }
       },
@@ -15113,10 +14420,7 @@
               "description": "Block height"
             }
           },
-          "required": [
-            "hash",
-            "height"
-          ],
+          "required": ["hash", "height"],
           "additionalProperties": false
         }
       },
@@ -15167,10 +14471,7 @@
               "description": "Block height"
             }
           },
-          "required": [
-            "hash",
-            "height"
-          ],
+          "required": ["hash", "height"],
           "additionalProperties": false
         }
       },
@@ -15211,10 +14512,7 @@
                   "x-bitcoin-default-hint": "Calculated from wallet and solving data"
                 }
               },
-              "required": [
-                "txid",
-                "vout"
-              ],
+              "required": ["txid", "vout"],
               "additionalProperties": false
             },
             "description": "Leave empty to add inputs automatically. See add_inputs option."
@@ -15253,9 +14551,7 @@
                     "description": "A key-value pair. The key must be \"data\", the value is hex-encoded data that becomes a part of an OP_RETURN output"
                   }
                 },
-                "required": [
-                  "data"
-                ],
+                "required": ["data"],
                 "additionalProperties": false
               }
             ],
@@ -15358,8 +14654,7 @@
                   "description": "The zero-based output index, before a change output is added."
                 },
                 "description": "The outputs to subtract the fee from.\nThe fee will be equally deducted from the amount of each specified output.\nThose recipients will receive less bitcoins than you enter in their corresponding amount field.\nIf no outputs are specified here, the sender pays the fee.",
-                "default": [
-                ]
+                "default": []
               },
               "max_tx_weight": {
                 "type": "number",
@@ -15395,8 +14690,7 @@
                       "description": "A public key"
                     },
                     "description": "Public keys involved in this transaction.",
-                    "default": [
-                    ]
+                    "default": []
                   },
                   "scripts": {
                     "type": "array",
@@ -15407,8 +14701,7 @@
                       "description": "A script"
                     },
                     "description": "Scripts involved in this transaction.",
-                    "default": [
-                    ]
+                    "default": []
                   },
                   "descriptors": {
                     "type": "array",
@@ -15417,8 +14710,7 @@
                       "description": "A descriptor"
                     },
                     "description": "Descriptors that provide solving data for this transaction.",
-                    "default": [
-                    ]
+                    "default": []
                   }
                 },
                 "additionalProperties": false,
@@ -15471,11 +14763,7 @@
               "description": "The position of the added change output, or -1"
             }
           },
-          "required": [
-            "psbt",
-            "fee",
-            "changepos"
-          ],
+          "required": ["psbt", "fee", "changepos"],
           "additionalProperties": false
         }
       },
@@ -15508,9 +14796,7 @@
               "description": "The address as confirmed by the signer"
             }
           },
-          "required": [
-            "address"
-          ],
+          "required": ["address"],
           "additionalProperties": false
         }
       },
@@ -15521,8 +14807,7 @@
       "summary": "Removes the wallet encryption key from memory, locking the wallet.",
       "description": "Removes the wallet encryption key from memory, locking the wallet.\nAfter calling this method, you will need to call walletpassphrase again\nbefore being able to call any methods which require the wallet to be unlocked.",
       "paramStructure": "by-position",
-      "params": [
-      ],
+      "params": [],
       "result": {
         "name": "result",
         "schema": {
@@ -15677,10 +14962,7 @@
               "x-bitcoin-optional": true
             }
           },
-          "required": [
-            "psbt",
-            "complete"
-          ],
+          "required": ["psbt", "complete"],
           "additionalProperties": false
         }
       },

@@ -14,6 +14,11 @@
 //! Hand-written `into_model()`-style wrappers live in `client_async::model::v30`,
 //! which is *not* part of this module.
 
+// Doc comments below are copied verbatim from Bitcoin Core's RPC help. They contain bare
+// URLs and bracketed parameter references (e.g. `[minconf]`) that rustdoc cannot resolve
+// as Rust intra-doc links. Silencing locally is preferable to mangling the upstream prose.
+#![allow(rustdoc::bare_urls, rustdoc::broken_intra_doc_links)]
+
 pub mod methods;
 pub mod options;
 pub mod types;
