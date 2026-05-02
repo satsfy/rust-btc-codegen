@@ -1,6 +1,3 @@
-# NB: this manifest declares an empty `[workspace]` so the crate stays *out* of the corepc Cargo
-# workspace. `rust-btc-codegen` is a self-contained sibling repository (own `.git`, own toolchain
-# story); the corepc workspace consumes its *output*, not its source.
 [workspace]
 
 [package]
