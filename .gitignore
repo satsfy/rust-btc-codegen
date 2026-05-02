@@ -1,9 +1,6 @@
 # Build artefacts
 **/target
-spec_compare/output/
-spec_compare/__pycache__/
 *.pyc
-*_compare.txt
 Cargo.lock
 
 # Generated bindings — regenerable from `specs/` via `just codegen`. Committing them in the
