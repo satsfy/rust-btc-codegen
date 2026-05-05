@@ -8,6 +8,41 @@ The generator is intentionally not part of the consumer crate's build. Generated
 committed in the consumer so normal builds have no dependency on this repository, on the OpenRPC
 JSON files, or on codegen being reproducible at build time.
 
+## How To Read This System
+
+This project is easiest to understand as a small compiler:
+
+- Input language: Bitcoin Core's OpenRPC JSON export.
+- Front end: `src/spec.rs`, which deserializes only the OpenRPC fields this tool needs.
+- Middle layer: `src/codegen.rs::lower()`, which converts OpenRPC methods into generator-owned
+  data structures.
+- Back end: `Modules::write()`, which emits Rust source files for the consumer crate.
+- Target runtime: `corepc-client`, not this repository.
+
+The important boundary is that this repo does not execute JSON-RPC calls. It generates the raw
+versioned call surface that `corepc-client` compiles and runs.
+
+## Architectural Patterns
+
+The code uses a few deliberate patterns:
+
+- Thin CLI, library-owned work: `src/main.rs` only resolves versions and paths; `src/lib.rs` owns
+  the reusable `generate()` path.
+- Typed slice over full schema: `src/spec.rs` models only the OpenRPC subset needed for codegen and
+  leaves the rest as ignored JSON.
+- Lowered intermediate representation: `GenType`, `MethodOut`, `ParamOut`, and `Modules` are the
+  generator's internal model, separate from the raw OpenRPC structs.
+- Recursive schema lowering: object and array schemas recursively create nested Rust helper types.
+- Conservative dynamic fallback: ambiguous shapes become `serde_json::Value` rather than an
+  over-specific generated type.
+- Deterministic output: sorted collections and category grouping make generated diffs reviewable.
+- Split generated files: types, options, and methods are emitted separately so reviewers can audit
+  response shape, optional argument surface, and dispatch shape independently.
+- Curated naming: all-lowercase Bitcoin Core RPC names are split with maintained word lists rather
+  than guessed with a general-purpose algorithm.
+- Raw/model separation: this repo generates raw RPC bindings; semantic wrappers and runtime variant
+  dispatch belong in the consumer's model layer.
+
 ## Repository Parts
 
 `Cargo.toml`
@@ -303,11 +338,12 @@ wording that a reviewer can compare generated output to the Bitcoin Core source 
 
 ## Dependencies
 
-Direct Rust dependencies:
+This crate intentionally has very few dependencies.
 
-- `serde` with `derive`: deserializes the OpenRPC slice and is referenced by generated derives.
-- `serde_json` with `preserve_order`: parses raw specs, carries loose schema fragments as
-  `Value`, and emits generated method parameters through `json!`.
+| Dependency | Where it is used | Why it exists |
+| --- | --- | --- |
+| `serde` with `derive` | `src/spec.rs`, generated `types.rs` | Deserializes the OpenRPC slice and provides generated response derives. |
+| `serde_json` with `preserve_order` | `src/lib.rs`, `src/spec.rs`, `src/codegen.rs`, generated `methods.rs` | Parses specs, stores loose schema fragments as `Value`, preserves object order while parsing, and emits RPC parameter JSON through `json!`. |
 
 Standard library usage:
 
